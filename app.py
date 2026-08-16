@@ -27,7 +27,7 @@ MODULE_KEYS = [k for k, _ in MODULES]
 MODULE_LABELS = dict(MODULES)
 
 VPC_URL = "https://claude.ai/public/artifacts/eccc7f0a-e1e0-4e54-83d4-b6dfd12fb053"
-QFD_URL = "https://claude.ai/public/artifacts/f1d67075-84a6-46dc-920d-ef66531cf5fe"
+QFD_URL = "https://qfd-v8-sept.netlify.app/"
 
 GREETING = """👋 **Welcome to the Innovation Process Navigator**
 

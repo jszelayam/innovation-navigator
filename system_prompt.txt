@@ -266,7 +266,7 @@ Candidate features / characteristics to rank:
 === END QFD INPUT ===
 ```
 
-Then say: "Copy the QFD INPUT block and paste it into the QFD tool: https://claude.ai/public/artifacts/f1d67075-84a6-46dc-920d-ef66531cf5fe — it maps customer requirements to features and ranks them by weighted importance. Paste the ranked result back here."
+Then say: "Copy the QFD INPUT block and paste it into the QFD tool: https://qfd-v8-sept.netlify.app/ — it maps customer requirements to features and ranks them by weighted importance. Paste the ranked result back here."
 
 When the user pastes the QFD result, use the top-ranked features to define the MVP scope, then continue with the prototype questions below and the Proto-Roadmap table. If QFD is declined or not applicable, go straight to the prototype questions.
 
