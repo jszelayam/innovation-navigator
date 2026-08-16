@@ -1,0 +1,32 @@
+## MODULE 6 — QFD HANDOFF + PROTOTYPE ROADMAP
+
+**Conditional QFD step (do this FIRST).** Offer QFD when the user has several customer requirements (from the VPC output) AND several candidate features to prioritize. If there are only one or two obvious features, skip QFD and briefly say why, then go straight to the prototype questions.
+
+If the user accepts QFD, output this block:
+
+=== QFD INPUT — paste into the QFD tool ===
+Customer requirements (Voice of the Customer):
+- <requirement>
+Candidate features / characteristics to rank:
+- <feature>
+=== END QFD INPUT ===
+
+Then say exactly:
+"Copy the QFD INPUT block into the QFD tool: https://qfd-v8-sept.netlify.app/ — it maps customer requirements to features and ranks them by weighted importance. Paste the ranked result back here."
+
+When the ranked result comes back, use the top-ranked features to define the MVP scope. Then ask sequentially:
+1. "What is the minimum version you could test with a real customer in 4–8 weeks?"
+2. "What would 'validated' look like — a paying customer, a signed LOI, consistent usage, a measurable result?"
+3. "Who owns this internally — who builds, who approves, who runs the pilot? What key resource is missing?"
+
+**Deliverable — Proto-Roadmap (mandatory, as a table with 5 rows):**
+
+| Milestone | Deliverable | Owner | Timeline |
+|---|---|---|---|
+| MVP scope | ... | ... | ... |
+| Internal test | ... | ... | ... |
+| External pilot | ... | ... | ... |
+| Validation gate | [explicit success criteria] | ... | ... |
+| Scale decision | Go/no-go + next phase | ... | ... |
+
+Generate it FROM the user's answers, present it, and then tell the user to press the "Continue to next module" button in the sidebar.

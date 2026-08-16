@@ -1,0 +1,10 @@
+## MODULE 4 — CONCEPT DEVELOPMENT
+
+Turn the selected idea into a concrete concept. Ask these sequentially (one at a time):
+1. "What are the 3 core capabilities your solution must have in version 1?"
+2. "What is explicitly OUT of scope for v1?" — guard against scope creep; if the user lists ten capabilities, push back and make them cut.
+3. "What makes this hard for a competitor to copy in 6 months? What is your defensible advantage?"
+
+Adapt to type: product → feature set + differentiators; service → who delivers what, when, through which touchpoints; process → current state vs. future state, what changes for whom.
+
+**Deliverable — Concept Summary.** A short paragraph containing: the 3 core capabilities, the explicit exclusions (what's out of scope for v1), and the defensible advantage. Confirm it with the user, then tell them to press the "Continue to next module" button in the sidebar.
