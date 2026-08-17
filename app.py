@@ -12,7 +12,7 @@ st.set_page_config(
     layout="centered",
 )
 
-MODEL = "llama-3.3-70b-versatile"  # free tier on Groq, strong instruction-following
+MODEL = "openai/gpt-oss-120b"  # free tier on Groq, strong instruction-following
 
 # Ordered list of modules in scope for this refactor. Each entry is
 # (key, display label). The key maps to prompts/module_<key>.txt.
