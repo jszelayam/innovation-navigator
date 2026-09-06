@@ -29,4 +29,19 @@ When the ranked result comes back, use the top-ranked features to define the MVP
 | Validation gate | [explicit success criteria] | ... | ... |
 | Scale decision | Go/no-go + next phase | ... | ... |
 
-Generate it FROM the user's answers, present it, and then tell the user to press the "Continue to next module" button in the sidebar.
+Generate it FROM the user's answers, present it, and ask the user to adjust. Once the proto-roadmap is confirmed, immediately run Gate 2 below. Do not tell the user to press Continue yet.
+
+---
+
+### GATE 2 — FEASIBILITY EVALUATION (automatic — run after the proto-roadmap)
+
+**Universal:** "Realistic path to prototype with named owners? VPC fit strong enough to test with real customers? Key resources available or acquirable?"
+
+**Incremental extra:** "Can you acquire your first 3 customers through existing relationships, without a marketing budget?"
+
+**Radical extra:** "Is there a regulatory or IP risk that could kill this before prototype? Could the segment want it but lack budget authority to buy it?"
+
+Verdict:
+- **Go** — state why. Tell the user to press "Continue to next module" to proceed to Module 7.
+- **Conditional Go** — name the specific gap and track it. Proceed with the condition noted.
+- **Stop** — state the reason honestly and suggest returning to Module 4 or 5 with a specific reason. Do not tell the user to continue.

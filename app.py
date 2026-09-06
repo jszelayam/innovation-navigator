@@ -17,11 +17,15 @@ MODEL = "openai/gpt-oss-120b"  # free tier on Groq, strong instruction-following
 # Ordered list of modules in scope for this refactor. Each entry is
 # (key, display label). The key maps to prompts/module_<key>.txt.
 MODULES = [
-    ("0b", "0b — Problem Framing"),
-    ("3", "3 — Idea Generation"),
+    ("1", "1 — Technical Solution Intake"),
+    ("1b", "1b — Problem Framing"),
+    ("2", "2 — Opportunity & Requirements Analysis"),
+    ("3", "3 — Idea Management"),
     ("4", "4 — Concept Development"),
     ("5", "5 — Value Proposition Canvas"),
     ("6", "6 — QFD & Prototype Roadmap"),
+    ("7", "7 — Marketing Plan"),
+    ("final", "Final Output — Validated Innovation Value Proposition"),
 ]
 MODULE_KEYS = [k for k, _ in MODULES]
 MODULE_LABELS = dict(MODULES)
@@ -101,20 +105,31 @@ def render_session_state_block() -> str:
     cap = st.session_state.captured
     label = MODULE_LABELS[st.session_state.current_module]
 
+    deliverables = cap.get("deliverables") or {}
+    completed = ", ".join(deliverables.keys()) if deliverables else "(none yet)"
+
     lines = [
         "=== SESSION STATE — Innovation Process Navigator ===",
         f"Entry route: {cap.get('entry_route') or '—'}",
         f"Innovation type: {cap.get('innovation_type') or '—'}",
         f"Classification: {cap.get('classification') or '—'}",
         f"Selected idea: {cap.get('selected_idea') or '—'}",
+        f"Completed modules: {completed}",
         f"Current module: {label}",
         "Deliverables captured:",
     ]
 
-    deliverables = cap.get("deliverables") or {}
     if deliverables:
         for module_name, summary in deliverables.items():
             lines.append(f"- {module_name}: {summary}")
+    else:
+        lines.append("- (none yet)")
+
+    gate_verdicts = cap.get("gate_verdicts") or {}
+    lines.append("Gate verdicts:")
+    if gate_verdicts:
+        for gate, verdict in gate_verdicts.items():
+            lines.append(f"- {gate}: {verdict}")
     else:
         lines.append("- (none yet)")
 
@@ -128,13 +143,13 @@ def merge_captured(new: dict) -> None:
     empty values never wipe existing keys."""
     cap = st.session_state.captured
     for key, value in new.items():
-        if key == "deliverables" and isinstance(value, dict):
-            existing = cap.get("deliverables") or {}
-            for module_name, summary in value.items():
-                if summary:  # never overwrite with empty
-                    existing[module_name] = summary
+        if key in ("deliverables", "gate_verdicts") and isinstance(value, dict):
+            existing = cap.get(key) or {}
+            for k, v in value.items():
+                if v:
+                    existing[k] = v
             if existing:
-                cap["deliverables"] = existing
+                cap[key] = existing
         elif value not in (None, "", [], {}):
             cap[key] = value
 
@@ -162,8 +177,11 @@ def update_captured() -> None:
             "Return ONLY a compact JSON object, no prose and no code fences, with "
             "exactly these keys: entry_route, innovation_type, classification, "
             "selected_idea, deliverables (an object mapping module name -> one-line "
-            "summary), open_risks. Use an empty string for anything not yet decided, "
-            "and {} for deliverables if none. Do not invent information."
+            "summary), gate_verdicts (an object mapping gate name like 'Gate 1' -> "
+            "verdict such as 'Go', 'Conditional Go — detail', or 'Stop — reason'), "
+            "open_risks. Use an empty string for anything not yet decided, "
+            "and {} for deliverables and gate_verdicts if none. Do not invent "
+            "information."
         )
         resp = client.chat.completions.create(
             model=MODEL,
@@ -187,7 +205,8 @@ def parse_pasted_session_state(text: str) -> dict:
     Returns a dict that may also contain a special 'current_module' key."""
     result: dict = {}
     deliverables: dict = {}
-    in_deliverables = False
+    gate_verdicts: dict = {}
+    section = None  # tracks which list section we're in
 
     label_map = {
         "entry route": "entry_route",
@@ -203,26 +222,36 @@ def parse_pasted_session_state(text: str) -> dict:
             continue
 
         if line.lower().startswith("deliverables captured"):
-            in_deliverables = True
+            section = "deliverables"
             continue
 
-        if in_deliverables and line.startswith("-"):
+        if line.lower().startswith("gate verdicts"):
+            section = "gate_verdicts"
+            continue
+
+        if section == "deliverables" and line.startswith("-"):
             item = line[1:].strip()
             if item and item.lower() != "(none yet)" and ":" in item:
                 module_name, summary = item.split(":", 1)
                 deliverables[module_name.strip()] = summary.strip()
             continue
 
+        if section == "gate_verdicts" and line.startswith("-"):
+            item = line[1:].strip()
+            if item and item.lower() != "(none yet)" and ":" in item:
+                gate_name, verdict = item.split(":", 1)
+                gate_verdicts[gate_name.strip()] = verdict.strip()
+            continue
+
         if ":" in line:
-            in_deliverables = False
+            section = None
             key, value = line.split(":", 1)
             key_norm = key.strip().lower()
             value = value.strip()
             if value in ("", "—"):
                 continue
             if key_norm == "current module":
-                # Match against a known module by its key prefix.
-                for mkey in MODULE_KEYS:
+                for mkey in sorted(MODULE_KEYS, key=len, reverse=True):
                     if value.lower().startswith(mkey.lower()):
                         result["current_module"] = mkey
                         break
@@ -231,6 +260,8 @@ def parse_pasted_session_state(text: str) -> dict:
 
     if deliverables:
         result["deliverables"] = deliverables
+    if gate_verdicts:
+        result["gate_verdicts"] = gate_verdicts
     return result
 
 
@@ -339,14 +370,22 @@ with st.sidebar:
         st.session_state.current_module = chosen
         st.rerun()
 
-    is_last = current_idx == len(MODULES) - 1
+    # Route-aware next module: Route A skips Module 1b
+    route = st.session_state.captured.get("entry_route", "").strip().upper()
+    if st.session_state.current_module == "1" and route in ("A", ""):
+        next_key = "2"
+    elif current_idx < len(MODULES) - 1:
+        next_key = MODULE_KEYS[current_idx + 1]
+    else:
+        next_key = None
+
+    is_last = next_key is None
     if st.button(
         "✅ Continue to next module",
         type="primary",
         disabled=is_last,
         use_container_width=True,
-    ):
-        next_key = MODULE_KEYS[current_idx + 1]
+    ) and next_key:
         st.session_state.current_module = next_key
         st.session_state.messages.append(
             {

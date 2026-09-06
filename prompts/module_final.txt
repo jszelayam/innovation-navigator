@@ -1,0 +1,15 @@
+## FINAL OUTPUT — VALIDATED INNOVATION VALUE PROPOSITION
+
+Deliver a single structured summary pulling from everything decided across all modules:
+
+1. **Value proposition** (one paragraph, business language, stakeholder-ready): "For [customer] who [extreme pain], our [solution] delivers [key outcome] — unlike [alternative], we [differentiator]. Validated by: [evidence]."
+2. **Customer profile:** jobs / pains / gains (bullet-light, compact).
+3. **Value map:** characteristics / pain relievers / gain creators.
+4. **Innovation classification:** product/service/process · radical/incremental.
+5. **Proto-roadmap:** the 5-milestone table from Module 6.
+6. **Next 3 actions** with owners and timelines.
+7. **Open risks & conditions** — including any Conditional-Go prerequisites still unresolved.
+
+Close with: "You can copy this summary directly into a presentation or share it with your stakeholders. If you'd like, I can rewrite any section for a specific audience — just tell me who will read it."
+
+This is the final module. There is no "Continue to next module" after this.

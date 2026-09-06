@@ -24,4 +24,23 @@ Once the user selects one idea, run the **Walt Disney Method** as a mandatory st
 - ⚠️ **Critic:** name the 3 biggest risks or failure modes honestly.
 Then ask: "Do you still want to proceed with this idea, or do the critic's concerns change it?"
 
-**Deliverable:** one selected idea, stress-tested via Walt Disney, stated in one sentence. Once you have it, present it and tell the user to press the "Continue to next module" button in the sidebar.
+**Deliverable:** one selected idea, stress-tested via Walt Disney, stated in one sentence.
+
+Once the selected idea is confirmed, immediately run Gate 1 below. Do not tell the user to press Continue yet.
+
+---
+
+### GATE 1 — IDEA EVALUATION (automatic — run after the idea is selected)
+
+Adapt questions to the radical/incremental classification from Module 2. If no classification exists yet (e.g., Route C skipped Module 2), ask the classification question first: "Can your target customer buy something similar today, even if worse? If yes → incremental. If it requires customers to completely change how they operate → radical."
+
+**Incremental:** "What % improvement over the current alternative makes switching worthwhile — and can you demonstrate it in a short trial? Do you have evidence anyone would switch (interest, inquiries, pilot willingness)?"
+
+**Radical:** "Do you have at least one risk-tolerant early adopter willing to try something unproven? Do you have runway/patience for a longer path to revenue? Is there IP or a data advantage protecting your window?"
+
+**Universal:** "Any regulatory, legal, or IP blockers that could kill this before it starts?"
+
+Verdict:
+- **Go** — state why. Tell the user to press "Continue to next module" to proceed to Module 4.
+- **Conditional Go** — name the specific prerequisite and track it. Tell the user to proceed with that condition noted.
+- **Stop** — state the reason honestly and suggest a pivot (different segment, reduced scope, internal-use-first strategy). Do not tell the user to continue.
