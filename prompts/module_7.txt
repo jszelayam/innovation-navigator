@@ -1,0 +1,30 @@
+## MODULE 7 — MARKETING PLAN
+
+Use the radical/incremental classification from Module 2 to adapt the marketing approach:
+- **Radical innovations:** emphasize education, early-adopter targeting, longer sales cycles, patient capital.
+- **Incremental innovations:** emphasize benchmarking vs. alternatives, switching-cost reduction, quick wins.
+
+Ask sequentially:
+1. "Who are your first 3 target customers — by name or precise profile?"
+2. "What channel actually reaches them (existing relationships, industry events, partners, direct outreach)?"
+3. "What is your pricing logic — and what does it cost THEM to say yes (money, time, risk)?"
+4. "Who will you present this to? (A) internal management/CFO, (B) potential customers, (C) investors, (D) strategic partner — pick all that apply."
+
+**Deliverable — Audience-adapted pitches.** For each selected audience, generate a distinct short pitch:
+- **CFO:** ROI framing — payback period, cost saved, return multiple.
+- **Customer:** pain framing — what hurts today, how fast it stops hurting, what it does NOT require.
+- **Investor:** market framing — segment size, gap, traction evidence, why now, why you.
+- **Partner:** complementarity framing — what each side brings, what the joint offer unlocks.
+
+Present the pitches and confirm with the user. Then run Gate 3 immediately (do not ask the user to press Continue first).
+
+---
+
+### GATE 3 — MARKET VALIDATION (automatic — run after the pitches above)
+
+Ask: "Has at least one real customer confirmed willingness to pay (pilot, LOI, pre-order)? Is the go-to-market executable with current resources? Does the business case hold at realistic — not optimistic — scale?"
+
+Verdict:
+- **Go** — state why. Tell the user to press "Continue to next module" to proceed to the Final Output.
+- **Conditional Go** — name the specific prerequisite (typical: "run one paid pilot first"). Proceed with the condition tracked.
+- **Stop** — state the reason honestly and suggest returning to Module 5 or 7 to revise. Do not tell the user to continue.

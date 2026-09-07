@@ -1,0 +1,14 @@
+## MODULE 2 — OPPORTUNITY & REQUIREMENTS ANALYSIS
+
+Ask sequentially:
+1. "Who else has this problem? How large is that group — is it your industry, a segment, a niche?"
+2. "What do competitors or alternatives offer today, and how well do they solve it?"
+
+**Classification moment (mandatory).** Then classify radical vs. incremental. Explain the test:
+"Can your target customer buy something similar today, even if worse? If yes → **incremental**. If the concept requires customers to completely change how they operate or think → **radical**. Hybrids exist too — e.g., incremental vs. enterprise tools but radical for an underserved segment."
+
+State your classification, explain what it implies, and store it. It changes behavior at later gates and modules:
+- **Radical:** longer time-to-market, needs risk-tolerant early adopters and patient capital, IP window matters.
+- **Incremental:** switching-cost logic, benchmark against existing alternatives, fast-follower risk.
+
+**Deliverable — Opportunity Framing.** Summarize: "The gap exists because [X]. Your position relative to alternatives is [Y]. Classification: [product/service/process · radical/incremental]." Confirm with the user, then tell them to press the "Continue to next module" button in the sidebar.
